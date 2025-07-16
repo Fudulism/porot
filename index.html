@@ -1,1 +1,915 @@
-<h1>harusnya bisa</h1>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Project: Analyzing Students&#x27; Mental Health</title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+    
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+    
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+    
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+    
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+    
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+    
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+    
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+    
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+    
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+    
+    mark {
+        background-color: transparent;
+    }
+    
+    .indented {
+        padding-left: 1.5em;
+    }
+    
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+    
+    img {
+        max-width: 100%;
+    }
+    
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+    
+    @page {
+        margin: 1in;
+    }
+    
+    .collection-content {
+        font-size: 0.875rem;
+    }
+    
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .column {
+        padding: 0 1em;
+    }
+    
+    .column:first-child {
+        padding-left: 0;
+    }
+    
+    .column:last-child {
+        padding-right: 0;
+    }
+    
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+    
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+    
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+    
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+    
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+    
+    table {
+        border-left: none;
+        border-right: none;
+    }
+    
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+    
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+    
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+    
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+    
+    ul > li {
+        list-style: disc;
+    }
+    
+    ul.to-do-list {
+        padding-inline-start: 0;
+    }
+    
+    ul.to-do-list > li {
+        list-style: none;
+    }
+    
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+    
+    ul.toggle > li {
+        list-style: none;
+    }
+    
+    ul {
+        padding-inline-start: 1.7em;
+    }
+    
+    ul > li {
+        padding-left: 0.1em;
+    }
+    
+    ol {
+        padding-inline-start: 1.6em;
+    }
+    
+    ol > li {
+        padding-left: 0.2em;
+    }
+    
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+    
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+    
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+    
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+    
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+    
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+    
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+    
+    .page-description {
+        margin-bottom: 2em;
+    }
+    
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+    
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+    
+    time {
+        opacity: 0.5;
+    }
+    
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+    
+    img.icon {
+        border-radius: 3px;
+    }
+    
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+    
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+    
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+    
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+    
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+    
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+    
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+    
+    p > .user {
+        opacity: 0.5;
+    }
+    
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+    
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+    
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+    
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+    
+    code {
+        color: #eb5757;
+    }
+    
+    .code {
+        padding: 1.5em 1em;
+    }
+    
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+    
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+    
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+    
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+    
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+    
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+    
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .highlight-default_background {
+        color: rgba(50, 48, 44, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .highlight-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(115, 114, 110, 1);
+        fill: rgba(115, 114, 110, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(205, 60, 58, 1);
+        fill: rgba(205, 60, 58, 1);
+    }
+    .block-color-default_background {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray_background {
+        background: rgba(248, 248, 247, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(248, 243, 252, 1);
+    }
+    .block-color-pink_background {
+        background: rgba(252, 241, 246, 1);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+    .select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+    .select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+    .select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+    .select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+    .select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+    .select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+    .select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+    .select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+    .select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+    
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+    
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+    
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+        
+    </style></head><body><article id="1aaba4b9-c084-80de-a463-f46371ef5c34" class="page sans"><header><h1 class="page-title">Project: Analyzing Students&#x27; Mental Health</h1><p class="page-description"></p></header><div class="page-body"><figure id="1aaba4b9-c084-80a5-bbbb-ed5ace5cd457" class="image"><a href="Untitled.jpg"><img style="width:709.9833374023438px" src="Untitled.jpg"/></a></figure><h2 id="1aaba4b9-c084-8106-af24-e54a921d7915" class="">Project Overview</h2><p id="1aaba4b9-c084-81cc-b4fb-efd9242e6491" class="">This SQL based project analysis will explore <code>students</code> dataset using PostgreSQL to find out does going to university in a different country affect students mental health? data surveyed in 2018 and published as a study the following year that was approved by several ethical and regulatory boards.<br/><br/>The study found that international students have a higher risk of mental health difficulties than the general population, and that social connectedness (belonging to a social group) and acculturative stress (stress associated with joining a new culture) are predictive of depression.<br/></p><h2 id="1aaba4b9-c084-8196-b8f0-eb8fd8110eee" class="">About Dataset</h2><p id="1aaba4b9-c084-813a-b6fa-c4451d111edc" class="">A marketing campaign dataset that provides insights for developing and refining strategies for future marketing campaigns</p><h2 id="1aaba4b9-c084-81dc-bb5a-fd6f0fd6ad7e" class="">Dataset Link</h2><p id="1aaba4b9-c084-81cb-a756-c2a9684d8022" class=""><a href="https://www.mdpi.com/2306-5729/4/3/124">https://www.mdpi.com/2306-5729/4/3/124</a></p><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Dataset Content</summary><div class="indented"><p id="1aaba4b9-c084-8123-9ade-f28fcc8a8066" class="">Here is a data description of the columns you may find helpful.</p><table id="1aaba4b9-c084-806b-b1bf-e57febf25a4e" class="simple-table"><tbody><tr id="1aaba4b9-c084-800b-90aa-ee9baf3fd234"><td id=";|DM" class="">Field Name</td><td id=";PmR" class="">Description</td></tr><tr id="1aaba4b9-c084-809d-b532-ed131aabb005"><td id=";|DM" class=""><code>inter_dom</code></td><td id=";PmR" class="">Types of students (international or domestic)</td></tr><tr id="1aaba4b9-c084-807e-8e6c-c39ee1605f28"><td id=";|DM" class=""><code>japanese_cate</code></td><td id=";PmR" class="">Japanese language proficiency</td></tr><tr id="1aaba4b9-c084-808a-b6eb-fed6fb238f52"><td id=";|DM" class=""><code>english_cate</code></td><td id=";PmR" class="">English language proficiency</td></tr><tr id="1aaba4b9-c084-80cb-9bd0-dac272538a99"><td id=";|DM" class=""><code>academic</code></td><td id=";PmR" class="">Current academic level (undergraduate or graduate)</td></tr><tr id="1aaba4b9-c084-8005-a86e-d5f217b91614"><td id=";|DM" class=""><code>age</code></td><td id=";PmR" class="">Current age of student</td></tr><tr id="1aaba4b9-c084-8016-ade8-fff2af1645ef"><td id=";|DM" class=""><code>stay</code></td><td id=";PmR" class="">Current length of stay in years</td></tr><tr id="1aaba4b9-c084-80fb-be54-d0ff4e5a52a9"><td id=";|DM" class=""><code>todep</code></td><td id=";PmR" class="">Total score of depression (PHQ-9 test)</td></tr><tr id="1aaba4b9-c084-80ba-bfad-cf867029c336"><td id=";|DM" class=""><code>tosc</code></td><td id=";PmR" class="">Total score of social connectedness (SCS test)</td></tr><tr id="1aaba4b9-c084-80f6-b9ec-c28f8721ccbd"><td id=";|DM" class=""><code>toas</code></td><td id=";PmR" class="">Total score of acculturative stress (ASISS test)</td></tr></tbody></table></div></details><h2 id="1aaba4b9-c084-8118-8280-c76aa3f25662" class="">Table of Contents</h2><nav id="1aaba4b9-c084-8119-96a1-c31acad70962" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-8106-af24-e54a921d7915">Project Overview</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-8196-b8f0-eb8fd8110eee">About Dataset</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-81dc-bb5a-fd6f0fd6ad7e">Dataset Link</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-81d2-8b8f-cb8b831b45fb">Dataset Content</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-8118-8280-c76aa3f25662">Table of Contents</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-8184-a93d-c19caae61411">Data Cleaning</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-8152-91c3-d3d76d815e5e">Report</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1aaba4b9-c084-81ba-8664-d045b6b71ae5">Attachment</a></div></nav><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Data Cleaning</summary><div class="indented"><ol type="1" id="1aaba4b9-c084-8154-a804-d4e1528fd48f" class="numbered-list" start="1"><li>Inspect students dataset</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80b8-87c1-cd8ba63f913c" class="code"><code class="language-SQL">select *
+    from students</code></pre><table id="1abba4b9-c084-8012-acfe-d297451be172" class="simple-table"><tbody><tr id="1abba4b9-c084-8032-8a97-f4fc2e696d2e"><td id="Jp=I" class="">inter_dom</td><td id="x&gt;V\" class="">region</td><td id="CuOi" class="">gender</td><td id="pwgH" class="">academic</td><td id="LIN[" class="">age</td><td id=":v|D" class="">age_cate</td><td id="GiGM" class="">stay</td><td id="gkfv" class="">stay_cate</td><td id="l{wn" class="">japanese</td><td id="muuu" class="">japanese_cate</td><td id="dT^N" class="">english</td><td id="vcLm" class="">english_cate</td><td id=";TMC" class="">intimate</td><td id="Eocf" class="">religion</td><td id="uHi_" class="">suicide</td><td id="?ybW" class="">dep</td><td id="yh\z" class="">deptype</td><td id="WKhU" class="">todep</td><td id="ETbT" class="">depsev</td><td id="^bAf" class="">tosc</td><td id="{P^v" class="">apd</td><td id="wAqD" class="">ahome</td><td id="nzPD" class="">aph</td><td id="AE^^" class="">afear</td><td id=";Zff" class="">acs</td><td id="vR@z" class="">aguilt</td><td id="aOiz" class="">amiscell</td><td id="Nctx" class="">toas</td><td id="qF[e" class="">partner</td><td id="Bmug" class="">friends</td><td id="ISn[" class="">parents</td><td id="gQNg" class="">relative</td><td id="pDK@" class="">profess</td><td id="}Yd}" class="">phone</td><td id="CPN_" class="">doctor</td><td id="cvf`" class="">rell</td><td id="GAu@" class="">alone</td><td id="]C&lt;E" class="">others</td><td id="|YhF" class="">internet</td><td id="F^wn" class="">partner_bi</td><td id="MarI" class="">friends_bi</td><td id="vrh~" class="">parents_bi</td><td id="iDP}" class="">relative_bi</td><td id="&lt;zto" class="">professional_bi</td><td id="ONQY" class="">phone_bi</td><td id=";|u;" class="">doctor_bi</td><td id="|pY;" class="">religion_bi</td><td id="qvPo" class="">alone_bi</td><td id="C;[w" class="">others_bi</td><td id="m&gt;lm" class="">internet_bi</td></tr><tr id="1abba4b9-c084-8054-9024-c4c58c2452ba"><td id="Jp=I" class="">Inter</td><td id="x&gt;V\" class="">SEA</td><td id="CuOi" class="">Female</td><td id="pwgH" class="">Grad</td><td id="LIN[" class="">25</td><td id=":v|D" class="">4</td><td id="GiGM" class="">4</td><td id="gkfv" class="">Long</td><td id="l{wn" class="">4</td><td id="muuu" class="">High</td><td id="dT^N" class="">4</td><td id="vcLm" class="">High</td><td id=";TMC" class=""></td><td id="Eocf" class="">No</td><td id="uHi_" class="">No</td><td id="?ybW" class="">Yes</td><td id="yh\z" class="">Other</td><td id="WKhU" class="">7</td><td id="ETbT" class="">Mild</td><td id="^bAf" class="">36</td><td id="{P^v" class="">22</td><td id="wAqD" class="">12</td><td id="nzPD" class="">13</td><td id="AE^^" class="">13</td><td id=";Zff" class="">10</td><td id="vR@z" class="">6</td><td id="aOiz" class="">33</td><td id="Nctx" class="">109</td><td id="qF[e" class="">4</td><td id="Bmug" class="">4</td><td id="ISn[" class="">4</td><td id="gQNg" class="">4</td><td id="pDK@" class="">4</td><td id="}Yd}" class="">4</td><td id="CPN_" class="">4</td><td id="cvf`" class="">4</td><td id="GAu@" class="">4</td><td id="]C&lt;E" class="">4</td><td id="|YhF" class=""></td><td id="F^wn" class="">No</td><td id="MarI" class="">No</td><td id="vrh~" class="">No</td><td id="iDP}" class="">No</td><td id="&lt;zto" class="">No</td><td id="ONQY" class="">No</td><td id=";|u;" class="">No</td><td id="|pY;" class="">No</td><td id="qvPo" class="">No</td><td id="C;[w" class="">No</td><td id="m&gt;lm" class="">No</td></tr><tr id="1abba4b9-c084-804b-b46b-d94194cdc6d9"><td id="Jp=I" class="">Inter</td><td id="x&gt;V\" class="">Others</td><td id="CuOi" class="">Male</td><td id="pwgH" class="">Grad</td><td id="LIN[" class="">31</td><td id=":v|D" class="">5</td><td id="GiGM" class="">2</td><td id="gkfv" class="">Medium</td><td id="l{wn" class="">1</td><td id="muuu" class="">Low</td><td id="dT^N" class="">4</td><td id="vcLm" class="">High</td><td id=";TMC" class="">Yes</td><td id="Eocf" class="">Yes</td><td id="uHi_" class="">No</td><td id="?ybW" class="">No</td><td id="yh\z" class="">No</td><td id="WKhU" class="">3</td><td id="ETbT" class="">Min</td><td id="^bAf" class="">48</td><td id="{P^v" class="">8</td><td id="wAqD" class="">4</td><td id="nzPD" class="">5</td><td id="AE^^" class="">12</td><td id=";Zff" class="">3</td><td id="vR@z" class="">2</td><td id="aOiz" class="">17</td><td id="Nctx" class="">51</td><td id="qF[e" class="">1</td><td id="Bmug" class="">1</td><td id="ISn[" class="">1</td><td id="gQNg" class="">2</td><td id="pDK@" class="">1</td><td id="}Yd}" class="">1</td><td id="CPN_" class="">2</td><td id="cvf`" class="">1</td><td id="GAu@" class="">2</td><td id="]C&lt;E" class="">1</td><td id="|YhF" class=""></td><td id="F^wn" class="">No</td><td id="MarI" class="">No</td><td id="vrh~" class="">No</td><td id="iDP}" class="">No</td><td id="&lt;zto" class="">No</td><td id="ONQY" class="">No</td><td id=";|u;" class="">No</td><td id="|pY;" class="">No</td><td id="qvPo" class="">No</td><td id="C;[w" class="">No</td><td id="m&gt;lm" class="">No</td></tr><tr id="1abba4b9-c084-807c-a168-d267df64f597"><td id="Jp=I" class="">Inter</td><td id="x&gt;V\" class="">Others</td><td id="CuOi" class="">Female</td><td id="pwgH" class="">Grad</td><td id="LIN[" class="">28</td><td id=":v|D" class="">5</td><td id="GiGM" class="">1</td><td id="gkfv" class="">Short</td><td id="l{wn" class="">1</td><td id="muuu" class="">Low</td><td id="dT^N" class="">2</td><td id="vcLm" class="">Low</td><td id=";TMC" class=""></td><td id="Eocf" class="">Yes</td><td id="uHi_" class="">No</td><td id="?ybW" class="">No</td><td id="yh\z" class="">No</td><td id="WKhU" class="">5</td><td id="ETbT" class="">Mild</td><td id="^bAf" class="">32</td><td id="{P^v" class="">24</td><td id="wAqD" class="">8</td><td id="nzPD" class="">10</td><td id="AE^^" class="">8</td><td id=";Zff" class="">6</td><td id="vR@z" class="">6</td><td id="aOiz" class="">30</td><td id="Nctx" class="">92</td><td id="qF[e" class="">7</td><td id="Bmug" class="">3</td><td id="ISn[" class="">7</td><td id="gQNg" class="">7</td><td id="pDK@" class="">3</td><td id="}Yd}" class="">1</td><td id="CPN_" class="">3</td><td id="cvf`" class="">1</td><td id="GAu@" class="">3</td><td id="]C&lt;E" class="">5</td><td id="|YhF" class=""></td><td id="F^wn" class="">Yes</td><td id="MarI" class="">No</td><td id="vrh~" class="">Yes</td><td id="iDP}" class="">Yes</td><td id="&lt;zto" class="">No</td><td id="ONQY" class="">No</td><td id=";|u;" class="">No</td><td id="|pY;" class="">No</td><td id="qvPo" class="">No</td><td id="C;[w" class="">Yes</td><td id="m&gt;lm" class="">No</td></tr><tr id="1abba4b9-c084-806a-8280-db3399eaa4ba"><td id="Jp=I" class="">Inter</td><td id="x&gt;V\" class="">SEA</td><td id="CuOi" class="">Female</td><td id="pwgH" class="">Grad</td><td id="LIN[" class="">31</td><td id=":v|D" class="">5</td><td id="GiGM" class="">1</td><td id="gkfv" class="">Short</td><td id="l{wn" class="">1</td><td id="muuu" class="">Low</td><td id="dT^N" class="">4</td><td id="vcLm" class="">High</td><td id=";TMC" class="">Yes</td><td id="Eocf" class="">Yes</td><td id="uHi_" class="">No</td><td id="?ybW" class="">No</td><td id="yh\z" class="">No</td><td id="WKhU" class="">8</td><td id="ETbT" class="">Mild</td><td id="^bAf" class="">47</td><td id="{P^v" class="">17</td><td id="wAqD" class="">12</td><td id="nzPD" class="">14</td><td id="AE^^" class="">13</td><td id=";Zff" class="">9</td><td id="vR@z" class="">4</td><td id="aOiz" class="">26</td><td id="Nctx" class="">95</td><td id="qF[e" class="">6</td><td id="Bmug" class="">2</td><td id="ISn[" class="">6</td><td id="gQNg" class="">2</td><td id="pDK@" class="">2</td><td id="}Yd}" class="">2</td><td id="CPN_" class="">2</td><td id="cvf`" class="">4</td><td id="GAu@" class="">2</td><td id="]C&lt;E" class="">5</td><td id="|YhF" class=""></td><td id="F^wn" class="">Yes</td><td id="MarI" class="">No</td><td id="vrh~" class="">Yes</td><td id="iDP}" class="">No</td><td id="&lt;zto" class="">No</td><td id="ONQY" class="">No</td><td id=";|u;" class="">No</td><td id="|pY;" class="">No</td><td id="qvPo" class="">No</td><td id="C;[w" class="">Yes</td><td id="m&gt;lm" class="">No</td></tr><tr id="1abba4b9-c084-8006-b39f-c5641408d1ae"><td id="Jp=I" class="">Inter</td><td id="x&gt;V\" class="">SA</td><td id="CuOi" class="">Male</td><td id="pwgH" class="">Grad</td><td id="LIN[" class="">29</td><td id=":v|D" class="">5</td><td id="GiGM" class="">1</td><td id="gkfv" class="">Short</td><td id="l{wn" class="">1</td><td id="muuu" class="">Low</td><td id="dT^N" class="">4</td><td id="vcLm" class="">High</td><td id=";TMC" class="">Yes</td><td id="Eocf" class="">Yes</td><td id="uHi_" class="">No</td><td id="?ybW" class="">No</td><td id="yh\z" class="">No</td><td id="WKhU" class="">1</td><td id="ETbT" class="">Min</td><td id="^bAf" class="">48</td><td id="{P^v" class="">8</td><td id="wAqD" class="">11</td><td id="nzPD" class="">5</td><td id="AE^^" class="">4</td><td id=";Zff" class="">7</td><td id="vR@z" class="">2</td><td id="aOiz" class="">17</td><td id="Nctx" class="">54</td><td id="qF[e" class="">7</td><td id="Bmug" class="">5</td><td id="ISn[" class="">7</td><td id="gQNg" class="">7</td><td id="pDK@" class="">1</td><td id="}Yd}" class="">1</td><td id="CPN_" class="">1</td><td id="cvf`" class="">4</td><td id="GAu@" class="">2</td><td id="]C&lt;E" class="">1</td><td id="|YhF" class=""></td><td id="F^wn" class="">Yes</td><td id="MarI" class="">Yes</td><td id="vrh~" class="">Yes</td><td id="iDP}" class="">Yes</td><td id="&lt;zto" class="">No</td><td id="ONQY" class="">No</td><td id=";|u;" class="">No</td><td id="|pY;" class="">No</td><td id="qvPo" class="">No</td><td id="C;[w" class="">No</td><td id="m&gt;lm" class="">No</td></tr></tbody></table><p id="1abba4b9-c084-804f-8a11-d8c2acda41af" class="">We can see that some rows in <code>intimate</code> and <code>internet</code> was <code>NULL</code>, we can fill this <code>NULL</code> values with update query in next step</p><ol type="1" id="1aaba4b9-c084-8186-9a6a-ec990e749a8a" class="numbered-list" start="2"><li><strong>Detect &amp; Identify Missing values</strong></li></ol><p id="1abba4b9-c084-803f-9eab-c45b58954e96" class="">We can <code>COUNT</code> and use <code>IS NULL</code> function to count and test for empty values</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8071-a53c-f20abe174785" class="code"><code class="language-SQL">-- identify missing rows values
+    SELECT count(*) as missingvalues
+    FROM public.students
+    WHERE inter_dom IS NULL
+    OR region IS NULL 
+    OR gender IS NULL 
+    OR academic IS NULL 
+    OR age IS NULL 
+    OR age_cate IS NULL 
+    OR stay IS NULL 
+    OR stay_cate IS NULL 
+    OR japanese IS NULL 
+    OR japanese_cate IS NULL 
+    OR english IS NULL 
+    OR english_cate IS NULL 
+    OR intimate IS NULL 
+    OR religion IS NULL 
+    OR suicide IS NULL 
+    OR dep IS NULL 
+    OR deptype IS NULL 
+    OR todep IS NULL 
+    OR depsev IS NULL 
+    OR tosc IS NULL 
+    OR apd IS NULL 
+    OR ahome IS NULL 
+    OR aph IS NULL 
+    OR afear IS NULL 
+    OR acs IS NULL 
+    OR aguilt IS NULL 
+    OR amiscell IS NULL 
+    OR toas IS NULL 
+    OR partner IS NULL 
+    OR friends IS NULL 
+    OR parents IS NULL 
+    OR relative IS NULL 
+    OR profess IS NULL 
+    OR phone IS NULL 
+    OR doctor IS NULL 
+    OR rell IS NULL 
+    OR alone IS NULL 
+    OR others IS NULL 
+    OR internet IS NULL 
+    OR partner_bi IS NULL 
+    OR friends_bi IS NULL 
+    OR parents_bi IS NULL 
+    OR relative_bi IS NULL 
+    OR professional_bi IS NULL 
+    OR phone_bi IS NULL 
+    OR doctor_bi IS NULL 
+    OR religion_bi IS NULL 
+    OR alone_bi IS NULL 
+    OR others_bi IS NULL 
+    OR internet_bi IS NULL;</code></pre><table id="1abba4b9-c084-8051-9232-ed60a531d1bb" class="simple-table"><tbody><tr id="1abba4b9-c084-8090-90d2-eae2e6c4c9d1"><td id="u|kr" class="">missingvalues</td></tr><tr id="1abba4b9-c084-805f-8d90-f7f356407aa3"><td id="u|kr" class="">18</td></tr></tbody></table><p id="1abba4b9-c084-80e3-af79-c161bb61b865" class="">there are 18 rows that have missing (<code>NULL</code>) values</p><ol type="1" id="1abba4b9-c084-8083-99b3-d5b275c2c670" class="numbered-list" start="3"><li><strong>Delete Missing values</strong></li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80e0-9ee5-f51e5edb8346" class="code"><code class="language-SQL">-- delete rows that have missing values (null values)
+    delete from students
+    where inter_dom is null </code></pre><ol type="1" id="1abba4b9-c084-80c2-9f91-d5c696505e38" class="numbered-list" start="4"><li>update missing values in internet and intimate column with mode query</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8088-bb8c-c1e79a252207" class="code"><code class="language-SQL">-- fill (update) missing values in internet and intimate column with mode query
+    update students 
+    set intimate = COALESCE(intimate,
+        (select mode() within group (order by intimate) from students)),
+         internet = COALESCE(internet,
+        (select mode() within group (order by internet) from students)) </code></pre><ol type="1" id="1abba4b9-c084-808a-b5ad-e4318d6a5855" class="numbered-list" start="5"><li>Identify Duplicate rows</li></ol><p id="1abba4b9-c084-80a4-8a37-eb9afe3177df" class="">We can identify duplicate arrows by using <code>ROW_NUMBER() OVER(PARTITION BY)</code> function to detect and partition each rows in the table</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8021-ae7d-d3e6eb1add6a" class="code"><code class="language-SQL">-- identify duplicate rows
+    select *
+    from (
+        select
+        inter_dom,
+        region,
+        age,
+        tosc,
+        apd,
+        ahome,
+        aph,
+        ROW_NUMBER() OVER(PARTITION BY inter_dom, region, age, tosc, apd, ahome, aph) as num_row
+     from public.students ) as sub
+     where num_row &gt; 1</code></pre><table id="1abba4b9-c084-8061-a1dd-c041d3611f35" class="simple-table"><tbody><tr id="1abba4b9-c084-8085-ab7f-edb4492ba689"><td id="gAui" class="">index</td><td id="G=Tq" class="">inter_dom</td><td id="{FaJ" class="">region</td><td id="KLp|" class="">age</td><td id="v}|Q" class="">tosc</td><td id="pfC=" class="">apd</td><td id="ohhr" class="">ahome</td><td id="ocyg" class="">aph</td><td id="A[\B" class="">num_row</td></tr><tr id="1abba4b9-c084-80d2-ab25-d52f727dc9c6"><td id="gAui" class="">17</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">19</td><td id="v}|Q" class="">47</td><td id="pfC=" class="">8</td><td id="ohhr" class="">7</td><td id="ocyg" class="">5</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-80ee-816c-c2ce17eeb13d"><td id="gAui" class="">18</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-802f-923d-c6c16b026465"><td id="gAui" class="">19</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">3</td></tr><tr id="1abba4b9-c084-80b8-9189-cf8786e7b960"><td id="gAui" class="">20</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">4</td></tr><tr id="1abba4b9-c084-800e-b5c8-f92fe6877bfb"><td id="gAui" class="">21</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">22</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-80cd-bed6-cb36d3f6e3b6"><td id="gAui" class="">22</td><td id="G=Tq" class="">Dom</td><td id="{FaJ" class="">JAP</td><td id="KLp|" class="">22</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">3</td></tr><tr id="1abba4b9-c084-8086-8a52-cf075a6f4315"><td id="gAui" class="">23</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SA</td><td id="KLp|" class="">24</td><td id="v}|Q" class="">44</td><td id="pfC=" class="">12</td><td id="ohhr" class="">6</td><td id="ocyg" class="">9</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-801c-ac14-d5891fe625cf"><td id="gAui" class="">24</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SEA</td><td id="KLp|" class="">20</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-8059-be1d-d4e93d8b5b6e"><td id="gAui" class="">25</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SEA</td><td id="KLp|" class="">20</td><td id="v}|Q" class="">48</td><td id="pfC=" class="">8</td><td id="ohhr" class="">4</td><td id="ocyg" class="">5</td><td id="A[\B" class="">3</td></tr><tr id="1abba4b9-c084-80ee-a289-f2faf3477cf1"><td id="gAui" class="">26</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SEA</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">31</td><td id="pfC=" class="">16</td><td id="ohhr" class="">14</td><td id="ocyg" class="">5</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-80a2-b604-f583255270fa"><td id="gAui" class="">27</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SEA</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">45</td><td id="pfC=" class="">18</td><td id="ohhr" class="">14</td><td id="ocyg" class="">10</td><td id="A[\B" class="">2</td></tr><tr id="1abba4b9-c084-801c-83d8-c9b2f39e4eda"><td id="gAui" class="">28</td><td id="G=Tq" class="">Inter</td><td id="{FaJ" class="">SEA</td><td id="KLp|" class="">21</td><td id="v}|Q" class="">45</td><td id="pfC=" class="">18</td><td id="ohhr" class="">14</td><td id="ocyg" class="">10</td><td id="A[\B" class="">3</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8072-a97a-df5264d152b9" class="numbered-list" start="6"><li>Delete duplicate rows</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80a4-a17b-c3836e2dbe20" class="code"><code class="language-SQL">-- delete duplicate rows
+    DELETE FROM students 
+      WHERE ctid = ANY(ARRAY(SELECT ctid 
+                      FROM (SELECT row_number() OVER (PARTITION BY inter_dom, region, age, tosc, apd, ahome, aph), ctid 
+                               FROM students) num_row 
+                     WHERE num_row.row_number &gt; 1));</code></pre><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Exploratory Data Analysis (EDA)</summary><div class="indented"><ol type="1" id="1abba4b9-c084-80cb-a84a-c80b1e9f767b" class="numbered-list" start="1"><li>International and Domestic Students Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-808f-a81d-c4631bde6bab" class="code"><code class="language-SQL">-- international and domestic students distribution 
+    select distinct(inter_dom), count(inter_dom) students_count,
+    CONCAT(ROUND((COUNT(religion) / SUM(COUNT(religion)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by inter_dom
+    order by count_percentage desc</code></pre><table id="1acba4b9-c084-8084-adc3-e6f61dbf8285" class="simple-table"><tbody><tr id="1acba4b9-c084-807b-9f8b-c1199bfdb5f8"><td id="&lt;SOY" class="">inter_dom</td><td id="ERV[" class="">students_count</td><td id="f^kL" class="">count_percentage</td></tr><tr id="1acba4b9-c084-804d-bac1-e5eb1bb1d24c"><td id="&lt;SOY" class="">Inter</td><td id="ERV[" class="">195</td><td id="f^kL" class="">76.17%</td></tr><tr id="1acba4b9-c084-80fd-a797-f873100957ae"><td id="&lt;SOY" class="">Dom</td><td id="ERV[" class="">61</td><td id="f^kL" class="">23.83%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8089-8dd5-fd7bc0a03d65" class="numbered-list" start="2"><li>Count University Students by Region</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8053-bd35-d32e2bc4989c" class="code"><code class="language-SQL">-- count students region
+    select distinct(region), count(region) as region_count,
+    CONCAT(ROUND((COUNT(region) / SUM(COUNT(region)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by region
+    order by region_count desc</code></pre><table id="1acba4b9-c084-80a4-b956-dd71a6768f51" class="simple-table"><tbody><tr id="1acba4b9-c084-80f6-bcda-cba1b25844da"><td id="N;d[" class="">region</td><td id="}|Rc" class="">region_count</td><td id="vrs]" class="">count_percentage</td></tr><tr id="1acba4b9-c084-80be-b967-cf1bf4189b0d"><td id="N;d[" class="">SEA</td><td id="}|Rc" class="">117</td><td id="vrs]" class="">45.70%</td></tr><tr id="1acba4b9-c084-80bc-988a-e7711349f0ac"><td id="N;d[" class="">JAP</td><td id="}|Rc" class="">63</td><td id="vrs]" class="">24.61%</td></tr><tr id="1acba4b9-c084-803d-8a6f-f80f1c16dd7b"><td id="N;d[" class="">EA</td><td id="}|Rc" class="">48</td><td id="vrs]" class="">18.75%</td></tr><tr id="1acba4b9-c084-8066-8d7e-c04a28d06dd2"><td id="N;d[" class="">SA</td><td id="}|Rc" class="">17</td><td id="vrs]" class="">6.64%</td></tr><tr id="1acba4b9-c084-80b0-8b76-ca235ae741c2"><td id="N;d[" class="">Others</td><td id="}|Rc" class="">11</td><td id="vrs]" class="">4.30%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80f5-ae73-dc4c3e077614" class="numbered-list" start="3"><li>Count University Students by Gender</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-801e-ace4-e4c290141d76" class="code"><code class="language-SQL">-- students gender comparison
+    select distinct(gender), count(gender) as count_gender,
+    CONCAT(ROUND((COUNT(gender) / SUM(COUNT(gender)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by gender
+    order by count_percentage desc</code></pre><table id="1acba4b9-c084-800a-9d9e-d17ac781d012" class="simple-table"><tbody><tr id="1acba4b9-c084-80b9-9091-e66cca1cd361"><td id="?Rr`" class="">gender</td><td id="JKnq" class="">count_gender</td><td id="]dwZ" class="">count_percentage</td></tr><tr id="1acba4b9-c084-80e1-a19e-edaad3c0dd47"><td id="?Rr`" class="">Female</td><td id="JKnq" class="">161</td><td id="]dwZ" class="">62.89%</td></tr><tr id="1acba4b9-c084-809a-af14-efcbd6524e80"><td id="?Rr`" class="">Male</td><td id="JKnq" class="">95</td><td id="]dwZ" class="">37.11%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8092-8a91-c67420f7de2d" class="numbered-list" start="4"><li>Count Students by Academic</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-805c-9dff-dc42030dfeb2" class="code"><code class="language-SQL">-- compare Graduate and Undergraduate Students
+    select distinct(academic), count(academic) as count_academic,
+    CONCAT(ROUND((COUNT(academic) / SUM(COUNT(academic)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by academic
+    order by academic desc
+    </code></pre><table id="1acba4b9-c084-8061-804e-f2eda3fb6b96" class="simple-table"><tbody><tr id="1acba4b9-c084-8074-8dd3-c58c84a276e7"><td id="GC@U" class="">academic</td><td id="}[oV" class="">count_academic</td><td id="gF~}" class="">count_percentage</td></tr><tr id="1acba4b9-c084-8068-a7e8-f2970d82398d"><td id="GC@U" class="">Under</td><td id="}[oV" class="">235</td><td id="gF~}" class="">91.80%</td></tr><tr id="1acba4b9-c084-801a-91e1-ec51065e4a9e"><td id="GC@U" class="">Grad</td><td id="}[oV" class="">21</td><td id="gF~}" class="">8.20%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8095-83b7-c88a8e36e718" class="numbered-list" start="5"><li>Students Age Distribution by gender</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-805b-b8fc-e54d52bca1c7" class="code"><code class="language-SQL">-- age distribution by gender
+    SELECT gender, min(age) min_age, max(age) max_age, ROUND(AVG(age),2) AS average_age
+    FROM students
+    GROUP BY gender;</code></pre><table id="1abba4b9-c084-8072-9071-db0bf2f19af0" class="simple-table"><tbody><tr id="1abba4b9-c084-80b8-b0d9-f213c9f1be6a"><td id="I[?E" class="">gender</td><td id="yicQ" class="">min_age</td><td id="Zu:m" class="">max_age</td><td id="^rYN" class="">average_age</td></tr><tr id="1abba4b9-c084-8042-93a8-e65c8d96840d"><td id="I[?E" class="">Female</td><td id="yicQ" class="">17</td><td id="Zu:m" class="">31</td><td id="^rYN" class="">20.68</td></tr><tr id="1abba4b9-c084-805d-8e07-d0cddb052f47"><td id="I[?E" class="">Male</td><td id="yicQ" class="">18</td><td id="Zu:m" class="">31</td><td id="^rYN" class="">21.17</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80d3-a342-dab244631adf" class="numbered-list" start="6"><li>Count students by age category</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8009-9b78-f7978725e092" class="code"><code class="language-SQL">-- age category distribution
+    select
+    (case 
+        when age_cate = 1 THEN &#x27;18&#x27;
+        when age_cate = 2 THEN &#x27;19-20&#x27;
+        when age_cate = 3 THEN &#x27;21-22&#x27;
+        when age_cate = 4 THEN &#x27;23-24&#x27;
+    else &#x27;25+&#x27;
+    END) age, count(age_cate) count_age_cate
+    from students
+    group by age_cate
+    order by 2 desc</code></pre><table id="1acba4b9-c084-8083-96e7-e6513ca67a7f" class="simple-table"><tbody><tr id="1acba4b9-c084-8006-a08c-ec189fc27f75"><td id="?hkc" class="">age</td><td id="hcxA" class="">count_age_cate</td></tr><tr id="1acba4b9-c084-80da-add0-ede6f6213b14"><td id="?hkc" class="">19-20</td><td id="hcxA" class="">99</td></tr><tr id="1acba4b9-c084-80ae-8d4f-da4fe6777f05"><td id="?hkc" class="">21-22</td><td id="hcxA" class="">70</td></tr><tr id="1acba4b9-c084-807f-956a-f7f074c80ef0"><td id="?hkc" class="">18</td><td id="hcxA" class="">40</td></tr><tr id="1acba4b9-c084-80ff-8229-e1f0d1dcd689"><td id="?hkc" class="">23-24</td><td id="hcxA" class="">31</td></tr><tr id="1acba4b9-c084-8064-a32c-c7d6430d5439"><td id="?hkc" class="">25+</td><td id="hcxA" class="">16</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8001-9259-f16a116121b9" class="numbered-list" start="7"><li>Count length of students stay (in years) </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80c7-902d-ca4367c9aaac" class="code"><code class="language-SQL">-- students stay distribution
+    select 
+    (case 
+        when stay &gt;= 7 THEN &#x27;Long (7+ Years)&#x27;
+        when stay &gt;= 3 THEN &#x27;Medium (3-6 Years)&#x27;
+        ELSE &#x27;Short (0-3 Years)&#x27;
+        END) stay_in_years, count(stay) stays
+    from students
+    group by stay_in_years
+    order by count(stay) desc</code></pre><table id="1acba4b9-c084-8068-bfbf-c2ca202f41b9" class="simple-table"><tbody><tr id="1acba4b9-c084-80a3-82ce-f3b123ee4ae3"><td id="fwlg" class="">stay_in_years</td><td id="luFC" class="">stays</td></tr><tr id="1acba4b9-c084-8039-909b-d4b0651ba721"><td id="fwlg" class="">Short (0-3 Years)</td><td id="luFC" class="">163</td></tr><tr id="1acba4b9-c084-800b-85d8-de82083bc562"><td id="fwlg" class="">Medium (3-6 Years)</td><td id="luFC" class="">90</td></tr><tr id="1acba4b9-c084-807f-8369-e7ea554ca716"><td id="fwlg" class="">Long (7+ Years)</td><td id="luFC" class="">3</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80c0-80e5-c2c6c6410322" class="numbered-list" start="8"><li>Students Japanese and English proficiency distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-806b-b796-ddf64682d066" class="code"><code class="language-SQL">-- students japanese and english proficiency distribution
+    with j_cte(japanese_proficiency, counted) as(
+        select 
+            distinct(japanese_cate) japanese_proficiency, 
+            count(japanese_cate) counted
+        from students
+        group by 
+            japanese_cate),
+    
+    e_cte(english_proficiency, counted) as(
+        select distinct(english_cate) english_proficiency, 
+            count(english_cate) counted
+        from students
+        group by 
+            english_cate)
+    
+    select * from e_cte
+        full outer join j_cte on
+            j_cte.japanese_proficiency = e_cte.english_proficiency
+        order by 2</code></pre><table id="1abba4b9-c084-804c-8bc4-cd188254782b" class="simple-table"><tbody><tr id="1abba4b9-c084-80d8-95c0-ca582fdf10e6"><td id="S^hw" class="">english_proficiency</td><td id="kzx[" class="">counted</td><td id="Z}LR" class="">japanese_proficiency</td><td id="PSE?" class="">counted-2</td></tr><tr id="1abba4b9-c084-807c-a334-eb23764c124b"><td id="S^hw" class="">Low</td><td id="kzx[" class="">21</td><td id="Z}LR" class="">Low</td><td id="PSE?" class="">88</td></tr><tr id="1abba4b9-c084-800a-91e9-f006b6d1590f"><td id="S^hw" class="">Average</td><td id="kzx[" class="">73</td><td id="Z}LR" class="">Average</td><td id="PSE?" class="">87</td></tr><tr id="1abba4b9-c084-800e-9f3e-e1c3a48959a5"><td id="S^hw" class="">High</td><td id="kzx[" class="">162</td><td id="Z}LR" class="">High</td><td id="PSE?" class="">81</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-804e-a602-db926081c9f2" class="numbered-list" start="9"><li>Students Intimate Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-805c-a94f-e07864e925e3" class="code"><code class="language-SQL">-- intimate distribution
+    select distinct(intimate), count(intimate),
+    CONCAT(ROUND((COUNT(intimate) / SUM(COUNT(intimate)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by intimate</code></pre><table id="1acba4b9-c084-8015-9251-de1f83a0ccba" class="simple-table"><tbody><tr id="1acba4b9-c084-80a8-abc7-fe365ce9311d"><td id="[&gt;gm" class="">intimate</td><td id="se?s" class="">count</td><td id="ITo\" class="">count_percentage</td></tr><tr id="1acba4b9-c084-8043-9611-f7fa054a9103"><td id="[&gt;gm" class="">No</td><td id="se?s" class="">159</td><td id="ITo\" class="">62.11%</td></tr><tr id="1acba4b9-c084-8057-b162-c415de8feb8c"><td id="[&gt;gm" class="">Yes</td><td id="se?s" class="">97</td><td id="ITo\" class="">37.89%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8020-8282-c6b0a8999fdf" class="numbered-list" start="10"><li>Students Religion Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-803e-a57f-f55936315009" class="code"><code class="language-SQL">-- religion distribution
+    select distinct(religion), count(religion),
+    CONCAT(ROUND((COUNT(religion) / SUM(COUNT(religion)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by religion</code></pre><table id="1acba4b9-c084-809e-bae2-ce849fd0587f" class="simple-table"><tbody><tr id="1acba4b9-c084-80b3-9fce-dd960d624cfb"><td id="tJSq" class="">religion</td><td id="vngU" class="">count</td><td id="b\}x" class="">count_percentage</td></tr><tr id="1acba4b9-c084-80d1-9df1-f5251a15c1ce"><td id="tJSq" class="">No</td><td id="vngU" class="">169</td><td id="b\}x" class="">66.02%</td></tr><tr id="1acba4b9-c084-80d8-b2b8-d63d25b2fc9f"><td id="tJSq" class="">Yes</td><td id="vngU" class="">87</td><td id="b\}x" class="">33.98%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-804d-9257-e2ed17e6ad66" class="numbered-list" start="11"><li>Students Suicide Risk Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80e3-9480-d3ad47663d91" class="code"><code class="language-SQL">-- suicide distribution
+    select distinct(suicide), count(suicide),
+    CONCAT(ROUND((COUNT(suicide) / SUM(COUNT(suicide)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by suicide</code></pre><table id="1acba4b9-c084-8066-9d28-d58099cf10de" class="simple-table"><tbody><tr id="1acba4b9-c084-8080-9220-f98808d4f204"><td id="j_t|" class="">suicide</td><td id="f@?o" class="">count</td><td id="Pt{p" class="">count_percentage</td></tr><tr id="1acba4b9-c084-8031-aafc-cc6294fcf60d"><td id="j_t|" class="">No</td><td id="f@?o" class="">195</td><td id="Pt{p" class="">76.17%</td></tr><tr id="1acba4b9-c084-8066-8390-edae3c06e3e3"><td id="j_t|" class="">Yes</td><td id="f@?o" class="">61</td><td id="Pt{p" class="">23.83%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8018-b510-cb9f7a8d8c33" class="numbered-list" start="12"><li>Students Depression Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-801c-8342-ca5ef475f052" class="code"><code class="language-SQL">-- dep(deppresion) distirbution
+    select distinct(dep), count(dep),
+    CONCAT(ROUND((COUNT(dep) / SUM(COUNT(dep)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by dep</code></pre><table id="1acba4b9-c084-80c2-9178-ff2e029f07f6" class="simple-table"><tbody><tr id="1acba4b9-c084-8077-8fd0-fb327c181643"><td id="xOye" class="">dep</td><td id="j|gJ" class="">count</td><td id="OkCf" class="">count_percentage</td></tr><tr id="1acba4b9-c084-801b-a053-db525f4c0f61"><td id="xOye" class="">No</td><td id="j|gJ" class="">161</td><td id="OkCf" class="">62.89%</td></tr><tr id="1acba4b9-c084-8014-839f-dea0a1726319"><td id="xOye" class="">Yes</td><td id="j|gJ" class="">95</td><td id="OkCf" class="">37.11%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8080-89ba-d74aa27a12a1" class="numbered-list" start="13"><li>Students Type of Depression Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8018-909d-ec5c176f7dc0" class="code"><code class="language-SQL">-- deptype(deppresion type) distribution
+    select distinct(deptype), count(deptype),
+    CONCAT(ROUND((COUNT(deptype) / SUM(COUNT(deptype)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by deptype</code></pre><table id="1acba4b9-c084-80b1-9a0d-d17fc05563bd" class="simple-table"><tbody><tr id="1acba4b9-c084-8095-809e-f9c988d077dc"><td id="s=rN" class="">deptype</td><td id="v[Uj" class="">count</td><td id="VQm`" class="">count_percentage</td></tr><tr id="1acba4b9-c084-8053-b57a-d4c30ccbf21a"><td id="s=rN" class="">Major</td><td id="v[Uj" class="">42</td><td id="VQm`" class="">16.41%</td></tr><tr id="1acba4b9-c084-806c-92a5-e3d3a7db4760"><td id="s=rN" class="">No</td><td id="v[Uj" class="">161</td><td id="VQm`" class="">62.89%</td></tr><tr id="1acba4b9-c084-80ba-9992-fbdab0a08cc1"><td id="s=rN" class="">Other</td><td id="v[Uj" class="">53</td><td id="VQm`" class="">20.70%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-806c-ba79-f6adf0c31979" class="numbered-list" start="14"><li>Students Depression Severity Level<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80df-85e5-cd7af4fb3f31" class="code"><code class="language-SQL">-- depsev(depression severity level)
+    select distinct(depsev), count(depsev),
+    CONCAT(ROUND((count(depsev) / SUM(count(depsev)) OVER())*100, 2), &#x27;%&#x27;) as count_percentage
+    from students
+    group by depsev
+    order by count(depsev) desc</code></pre><table id="1acba4b9-c084-800f-a939-e839a0ec0a90" class="simple-table"><tbody><tr id="1acba4b9-c084-808c-9c44-fb889293c17a"><td id="Xjzs" class="">depsev</td><td id="Cxnz" class="">count</td><td id="Ky=z" class="">count_percentage</td></tr><tr id="1acba4b9-c084-802f-b53b-c79c3fde76e0"><td id="Xjzs" class="">Mild</td><td id="Cxnz" class="">101</td><td id="Ky=z" class="">39.45%</td></tr><tr id="1acba4b9-c084-809b-a964-dfdafbab9eed"><td id="Xjzs" class="">Mod</td><td id="Cxnz" class="">71</td><td id="Ky=z" class="">27.73%</td></tr><tr id="1acba4b9-c084-802c-bd67-d00b8f35ecdd"><td id="Xjzs" class="">Min</td><td id="Cxnz" class="">61</td><td id="Ky=z" class="">23.83%</td></tr><tr id="1acba4b9-c084-8054-b3a4-f632c7c080a2"><td id="Xjzs" class="">ModSev</td><td id="Cxnz" class="">15</td><td id="Ky=z" class="">5.86%</td></tr><tr id="1acba4b9-c084-8097-9a7a-d5b6c7a01bca"><td id="Xjzs" class="">Sev</td><td id="Cxnz" class="">8</td><td id="Ky=z" class="">3.13%</td></tr></tbody></table></li></ol><ol type="1" id="1abba4b9-c084-80d8-956e-ef270a5fa602" class="numbered-list" start="14"><li>Students PHQ-9 Test Score distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1adba4b9-c084-803a-b077-f7621f48ee76" class="code"><code class="language-SQL">select min(todep),max(todep),round(avg(todep), 2) average
+    from students</code></pre><table id="1adba4b9-c084-803b-b21b-ef9f66298923" class="simple-table"><tbody><tr id="1adba4b9-c084-803f-9a2b-eb1936f7ac4e"><td id="erwx" class="">min</td><td id=":K:C" class="">max</td><td id="]{Rm" class="">average</td></tr><tr id="1adba4b9-c084-8019-868a-d8115f9b37d9"><td id="erwx" class="">0</td><td id=":K:C" class="">25</td><td id="]{Rm" class="">8.28</td></tr></tbody></table><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-809c-a9cb-ea82ab6a21c8" class="code"><code class="language-SQL">-- todep(total depression score of depression (PHQ-9 test))
+    select
+    case 
+        when todep &gt;= 20 THEN &#x27;Severe&#x27;
+        when todep &gt;= 15 THEN &#x27;Moderately Severe&#x27;
+        when todep &gt;= 10 THEN &#x27;Moderate&#x27;
+        ELSE &#x27;Mild&#x27;
+        END category, count(todep),
+        CONCAT(ROUND((COUNT(todep) / SUM(COUNT(todep)) OVER ()) * 100, 2), &#x27;%&#x27;) AS count_percentage
+    from students
+    group by category
+    order by count(todep) desc</code></pre><table id="1acba4b9-c084-8001-bd06-e8b3c481a698" class="simple-table"><tbody><tr id="1acba4b9-c084-80bf-82b2-c2185a3021b8"><td id="Fn|\" class="">category</td><td id="VUke" class="">count</td><td id="em^N" class="">count_percentage</td></tr><tr id="1acba4b9-c084-8030-bb5a-d0fbd0d43577"><td id="Fn|\" class="">Mild</td><td id="VUke" class="">162</td><td id="em^N" class="">63.28%</td></tr><tr id="1acba4b9-c084-800d-80b2-d6836650e886"><td id="Fn|\" class="">Moderate</td><td id="VUke" class="">71</td><td id="em^N" class="">27.73%</td></tr><tr id="1acba4b9-c084-801b-b007-f5dc122ae617"><td id="Fn|\" class="">Moderately Severe</td><td id="VUke" class="">15</td><td id="em^N" class="">5.86%</td></tr><tr id="1acba4b9-c084-80d9-a3de-ec9aeabd2001"><td id="Fn|\" class="">Severe</td><td id="VUke" class="">8</td><td id="em^N" class="">3.13%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8061-a701-c680cd4dbafa" class="numbered-list" start="16"><li>Students SCS Test Score Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1adba4b9-c084-80bf-be2e-cfb4f19e78e8" class="code"><code class="language-SQL">select min(tosc), max(tosc), round(avg(tosc), 2) mean
+    from students
+    </code></pre><table id="1adba4b9-c084-80fa-8660-fba954072ea6" class="simple-table"><tbody><tr id="1adba4b9-c084-8088-b1cf-e708f0372e7d"><td id="?]cq" class="">min</td><td id="pTuF" class="">max</td><td id="PRij" class="">mean</td></tr><tr id="1adba4b9-c084-8032-82fa-d14d87cd5a41"><td id="?]cq" class="">8</td><td id="pTuF" class="">48</td><td id="PRij" class="">37.09</td></tr></tbody></table><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80a7-b201-fc1fb66b677a" class="code"><code class="language-SQL">-- we use 37.09 mean score to determine which students has social connectedness and disconnection
+    select count(tosc),
+        case
+            when tosc  &gt;= 37.09 THEN &#x27;Connectedness&#x27;
+            ELSE &#x27;Disconnection&#x27;
+        END Category,
+    CONCAT(ROUND((count(tosc) / SUM(count(tosc)) OVER())*100, 2), &#x27;%&#x27;) as count_percentage
+    from students
+    group by Category
+    order by count(tosc) desc</code></pre><table id="1adba4b9-c084-80e8-94da-cae2c98c562c" class="simple-table"><tbody><tr id="1adba4b9-c084-807e-a41a-e9750f0fe63d"><td id="nAcq" class="">count</td><td id="olFn" class="">category</td><td id="Hktf" class="">count_percentage</td></tr><tr id="1adba4b9-c084-809a-b9d1-d5762b2f0c9b"><td id="nAcq" class="">145</td><td id="olFn" class="">Connectedness</td><td id="Hktf" class="">56.64%</td></tr><tr id="1adba4b9-c084-80f0-84a2-d873b263cc82"><td id="nAcq" class="">111</td><td id="olFn" class="">Disconnection</td><td id="Hktf" class="">43.36%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80cc-8649-d17aa5378afe" class="numbered-list" start="17"><li>Students ASSIS Test Score Distribution</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1adba4b9-c084-806c-aa59-ec2e923358ca" class="code"><code class="language-SQL">-- count min, average, and max of students ASSIS test score
+    select min(toas) min_score, max(toas) max_score, round(avg(toas), 2) average_score
+    from students</code></pre><table id="1adba4b9-c084-801f-92ec-f19aba72626b" class="simple-table"><tbody><tr id="1adba4b9-c084-8062-9167-d886d084883f"><td id="]h;e" class="">min_score</td><td id="\pqM" class="">max_score</td><td id="ReNA" class="">average_score</td></tr><tr id="1adba4b9-c084-8023-a207-ffce3fff110e"><td id="]h;e" class="">36</td><td id="\pqM" class="">145</td><td id="ReNA" class="">73.36</td></tr></tbody></table><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-801d-a7be-c38ebf5e4682" class="code"><code class="language-SQL">-- toas(total score of acculturative stress (ASSIS test))
+    select count(toas) ASSIS_test_score,
+        case
+            when toas &gt;= 109 THEN &#x27;Warning&#x27;
+            ELSE &#x27;Normal&#x27;
+            END category,
+        CONCAT(ROUND((count(toas) / SUM(count(toas)) OVER())*100, 2), &#x27;%&#x27;) as count_percentage
+    from students
+    group by category
+    order by ASSIS_test_score desc</code></pre><table id="1adba4b9-c084-8084-ac88-cef856b45cf1" class="simple-table"><tbody><tr id="1adba4b9-c084-8051-8ac6-c3d54cffc072"><td id="qL;p" class="">count</td><td id="ChTv" class="">category</td><td id="{|Z|" class="">count_percentage</td></tr><tr id="1adba4b9-c084-80c9-9b59-c97dfc44e4a4"><td id="qL;p" class="">240</td><td id="ChTv" class="">Normal</td><td id="{|Z|" class="">93.75%</td></tr><tr id="1adba4b9-c084-80b2-8204-e3d5f909e3de"><td id="qL;p" class="">16</td><td id="ChTv" class="">Warning</td><td id="{|Z|" class="">6.25%</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8047-9791-e438f61260ac" class="numbered-list" start="18"><li>Students Average Japanese and English Proficiency By Region</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80b7-b98f-edcb3e431880" class="code"><code class="language-SQL">-- AVERAGE japanese and english proficiency by region
+    SELECT region, round(AVG(japanese), 2) AS average_japanese, ROUND(AVG(english), 2) AS average_english
+    FROM students
+    GROUP BY region;</code></pre><table id="1abba4b9-c084-8054-bafd-f8a36d485e2d" class="simple-table"><tbody><tr id="1abba4b9-c084-80b3-9630-de54e18d225b"><td id="Oxm:" class="">region</td><td id="UfGC" class="">average_japanese</td><td id="FUe&gt;" class="">average_english</td></tr><tr id="1abba4b9-c084-8058-8c05-c7ad7b606f61"><td id="Oxm:" class="">EA</td><td id="UfGC" class="">2.73</td><td id="FUe&gt;" class="">3.56</td></tr><tr id="1abba4b9-c084-802d-b019-fc1a8c73e9c4"><td id="Oxm:" class="">SA</td><td id="UfGC" class="">2.71</td><td id="FUe&gt;" class="">4.35</td></tr><tr id="1abba4b9-c084-80d4-8be1-dd52a2c2d2e6"><td id="Oxm:" class="">JAP</td><td id="UfGC" class="">4.81</td><td id="FUe&gt;" class="">2.94</td></tr><tr id="1abba4b9-c084-8098-94e1-c6bcbb107d12"><td id="Oxm:" class="">Others</td><td id="UfGC" class="">2.18</td><td id="FUe&gt;" class="">4.55</td></tr><tr id="1abba4b9-c084-8031-a730-dd4e9d564d35"><td id="Oxm:" class="">SEA</td><td id="UfGC" class="">2.44</td><td id="FUe&gt;" class="">3.91</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80fd-8eda-d2c424a58190" class="numbered-list" start="19"><li>Students Tests scores by International and Domestic Students</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-8036-9992-e0cfa0da6a3c" class="code"><code class="language-SQL">SELECT inter_dom,
+           MIN(&quot;todep&quot;) AS min_phq, 
+           MAX(&quot;todep&quot;) AS max_phq, 
+           ROUND(AVG(&quot;todep&quot;), 2) AS avg_phq, 
+           MIN(&quot;tosc&quot;) AS min_scs, 
+           MAX(&quot;tosc&quot;) AS max_scs, 
+           ROUND(AVG(&quot;tosc&quot;), 2) AS avg_scs, 
+           MIN(&quot;toas&quot;) AS min_as, 
+           MAX(&quot;toas&quot;) AS max_as, 
+           ROUND(AVG(&quot;toas&quot;), 2) AS avg_as
+    FROM students
+    WHERE inter_dom IN (&#x27;Inter&#x27;, &#x27;Dom&#x27;)
+    GROUP BY inter_dom;</code></pre><table id="1abba4b9-c084-80a0-ab92-e292ec4ea870" class="simple-table"><tbody><tr id="1abba4b9-c084-80ad-9702-e06846c9bbde"><td id="ELZ:" class="">inter_dom</td><td id="`=]D" class="">min_phq</td><td id="Dk\O" class="">max_phq</td><td id="ViP|" class="">avg_phq</td><td id="XFjc" class="">min_scs</td><td id="=fjI" class="">max_scs</td><td id="DDU^" class="">avg_scs</td><td id="gBw`" class="">min_as</td><td id="rpWY" class="">max_as</td><td id="wOzS" class="">avg_as</td></tr><tr id="1abba4b9-c084-8087-ad88-e2cf84779d5d"><td id="ELZ:" class="">Inter</td><td id="`=]D" class="">0</td><td id="Dk\O" class="">25</td><td id="ViP|" class="">8.05</td><td id="XFjc" class="">11</td><td id="=fjI" class="">48</td><td id="DDU^" class="">37.23</td><td id="gBw`" class="">36</td><td id="rpWY" class="">145</td><td id="wOzS" class="">75.87</td></tr><tr id="1abba4b9-c084-805e-a2fd-c476c7e25895"><td id="ELZ:" class="">Dom</td><td id="`=]D" class="">0</td><td id="Dk\O" class="">23</td><td id="ViP|" class="">9</td><td id="XFjc" class="">8</td><td id="=fjI" class="">48</td><td id="DDU^" class="">36.64</td><td id="gBw`" class="">36</td><td id="rpWY" class="">112</td><td id="wOzS" class="">65.34</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-80a8-af95-cd5fe4d11da5" class="numbered-list" start="20"><li>Average Scores for each Age group of International Students</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-801a-a48f-c35850bc5f47" class="code"><code class="language-SQL">-- Find the average scores for each age group of international students
+    SELECT &quot;Age&quot;, 
+           ROUND(AVG(&quot;ToDep&quot;), 2) AS avg_phq, 
+           ROUND(AVG(&quot;ToSC&quot;), 2) AS avg_scs, 
+           ROUND(AVG(&quot;ToAS&quot;), 2) AS avg_as
+    FROM students
+    WHERE inter_dom = &#x27;Inter&#x27;
+    GROUP BY &quot;Age&quot;
+    ORDER BY &quot;Age&quot;;</code></pre><table id="1abba4b9-c084-8004-8ed7-fc38d5bace9d" class="simple-table"><tbody><tr id="1abba4b9-c084-80fa-9c5e-e2a1cd1b5785"><td id="FZfT" class="">age</td><td id="KTL&gt;" class="">avg_phq</td><td id="qidr" class="">avg_scs</td><td id="jeKo" class="">avg_as</td></tr><tr id="1abba4b9-c084-80bf-a089-cb49962e153e"><td id="FZfT" class="">17</td><td id="KTL&gt;" class="">4.67</td><td id="qidr" class="">37.33</td><td id="jeKo" class="">70.67</td></tr><tr id="1abba4b9-c084-80ee-bdea-d2110b158d5d"><td id="FZfT" class="">18</td><td id="KTL&gt;" class="">8.75</td><td id="qidr" class="">34.11</td><td id="jeKo" class="">80.61</td></tr><tr id="1abba4b9-c084-809a-82f3-feb16813c34f"><td id="FZfT" class="">19</td><td id="KTL&gt;" class="">8.44</td><td id="qidr" class="">37.9</td><td id="jeKo" class="">74.1</td></tr><tr id="1abba4b9-c084-80a8-9a31-c4fd2250242d"><td id="FZfT" class="">20</td><td id="KTL&gt;" class="">7.53</td><td id="qidr" class="">37.59</td><td id="jeKo" class="">75.59</td></tr><tr id="1abba4b9-c084-8082-9af2-e0097d6eba0d"><td id="FZfT" class="">21</td><td id="KTL&gt;" class="">9.17</td><td id="qidr" class="">37.53</td><td id="jeKo" class="">74.39</td></tr><tr id="1abba4b9-c084-80bf-82a0-e5249cb57d95"><td id="FZfT" class="">22</td><td id="KTL&gt;" class="">8.36</td><td id="qidr" class="">38.14</td><td id="jeKo" class="">70.43</td></tr><tr id="1abba4b9-c084-80b8-a75b-c0f3d5e1d804"><td id="FZfT" class="">23</td><td id="KTL&gt;" class="">9.67</td><td id="qidr" class="">32</td><td id="jeKo" class="">81.25</td></tr><tr id="1abba4b9-c084-80bd-8218-ee52a3bc19d1"><td id="FZfT" class="">24</td><td id="KTL&gt;" class="">4</td><td id="qidr" class="">42</td><td id="jeKo" class="">76.2</td></tr><tr id="1abba4b9-c084-8057-a0f4-cb42ff6971ac"><td id="FZfT" class="">25</td><td id="KTL&gt;" class="">6.11</td><td id="qidr" class="">37.33</td><td id="jeKo" class="">80.78</td></tr><tr id="1abba4b9-c084-80a1-aeaa-fc62bb7f030c"><td id="FZfT" class="">27</td><td id="KTL&gt;" class="">10</td><td id="qidr" class="">35</td><td id="jeKo" class="">42</td></tr><tr id="1abba4b9-c084-80eb-a78c-df1f12116555"><td id="FZfT" class="">28</td><td id="KTL&gt;" class="">3.33</td><td id="qidr" class="">39</td><td id="jeKo" class="">71</td></tr><tr id="1abba4b9-c084-8062-a916-d21af6315621"><td id="FZfT" class="">29</td><td id="KTL&gt;" class="">3.75</td><td id="qidr" class="">43</td><td id="jeKo" class="">63.5</td></tr><tr id="1abba4b9-c084-80e8-879e-e9ca93f6664f"><td id="FZfT" class="">30</td><td id="KTL&gt;" class="">9.33</td><td id="qidr" class="">41</td><td id="jeKo" class="">97.33</td></tr><tr id="1abba4b9-c084-80f6-b1cd-cb05944072d4"><td id="FZfT" class="">31</td><td id="KTL&gt;" class="">5.75</td><td id="qidr" class="">43.5</td><td id="jeKo" class="">80.25</td></tr></tbody></table><ol type="1" id="1abba4b9-c084-8041-bb97-f961d6378b89" class="numbered-list" start="21"><li>Average Scores by Length of stay for International Students</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aaba4b9-c084-80de-86b2-e65f6ed2d210" class="code"><code class="language-SQL">-- Find the average scores by length of stay for international students
+    SELECT &quot;stay&quot;, 
+           ROUND(AVG(&quot;todep&quot;), 2) AS avg_phq, 
+           ROUND(AVG(&quot;tosc&quot;), 2) AS avg_scs, 
+           ROUND(AVG(&quot;toas&quot;), 2) AS avg_as
+    FROM students
+    WHERE inter_dom = &#x27;Inter&#x27;
+    GROUP BY &quot;stay&quot;
+    ORDER BY &quot;stay&quot;;</code></pre><table id="1abba4b9-c084-8014-b729-c8ed6e12ee44" class="simple-table"><tbody><tr id="1abba4b9-c084-80b5-b2ac-c5597641becf"><td id="xaWJ" class="">stay</td><td id="ZBfe" class="">avg_phq</td><td id="|Nfw" class="">avg_scs</td><td id="Dpkt" class="">avg_as</td></tr><tr id="1abba4b9-c084-801f-9a97-d6292abfa2d2"><td id="xaWJ" class="">1</td><td id="ZBfe" class="">7.53</td><td id="|Nfw" class="">37.94</td><td id="Dpkt" class="">73.28</td></tr><tr id="1abba4b9-c084-80d0-8479-f1154f575993"><td id="xaWJ" class="">2</td><td id="ZBfe" class="">8.28</td><td id="|Nfw" class="">37.08</td><td id="Dpkt" class="">77.67</td></tr><tr id="1abba4b9-c084-8087-8c10-f25adb6dcccb"><td id="xaWJ" class="">3</td><td id="ZBfe" class="">9.1</td><td id="|Nfw" class="">36.64</td><td id="Dpkt" class="">78.48</td></tr><tr id="1abba4b9-c084-8003-ad2d-d79ebb5e5138"><td id="xaWJ" class="">4</td><td id="ZBfe" class="">8.57</td><td id="|Nfw" class="">33.93</td><td id="Dpkt" class="">87.71</td></tr><tr id="1abba4b9-c084-8041-a36c-e74705f865d9"><td id="xaWJ" class="">5</td><td id="ZBfe" class="">0</td><td id="|Nfw" class="">34</td><td id="Dpkt" class="">91</td></tr><tr id="1abba4b9-c084-80b4-a0b8-c2e7bcefba99"><td id="xaWJ" class="">6</td><td id="ZBfe" class="">6</td><td id="|Nfw" class="">38</td><td id="Dpkt" class="">58.67</td></tr><tr id="1abba4b9-c084-8058-a931-c5f5c5144e3d"><td id="xaWJ" class="">7</td><td id="ZBfe" class="">4</td><td id="|Nfw" class="">48</td><td id="Dpkt" class="">45</td></tr><tr id="1abba4b9-c084-80aa-a374-c06900f4d573"><td id="xaWJ" class="">8</td><td id="ZBfe" class="">10</td><td id="|Nfw" class="">44</td><td id="Dpkt" class="">65</td></tr><tr id="1abba4b9-c084-8018-9603-f2eaa5fb0644"><td id="xaWJ" class="">10</td><td id="ZBfe" class="">13</td><td id="|Nfw" class="">32</td><td id="Dpkt" class="">50</td></tr></tbody></table></div></details><p id="1aaba4b9-c084-8090-bdc0-d0693cf9f3dd" class="">
+    </p><p id="1aaba4b9-c084-8164-93ff-c6dae057bc83" class="">
+    </p></div></details><details open=""><summary style="font-weight:600;font-size:1.5em;line-height:1.3;margin:0">Report</summary><div class="indented"><ol type="1" id="1aaba4b9-c084-816b-bcb7-d604cc14d48e" class="numbered-list" start="1"><li>We found that Students from Japanese University in this dataset is <strong>195</strong> International Students &amp; <strong>61</strong> Domestic Students</li></ol><ol type="1" id="1aaba4b9-c084-81cf-82bd-e2de5921e02e" class="numbered-list" start="2"><li>Students mostly come from SEA with <strong>117</strong> students, Japanese <strong>63</strong> students, <strong>48</strong> Eastern Asia Students, <strong>17</strong> South Asia Students and 11 from others region</li></ol><ol type="1" id="1aaba4b9-c084-8167-bc60-c6efccae88ab" class="numbered-list" start="3"><li>Students that study in University mostly is Undergraduate with <strong>235</strong> Students and <strong>21</strong> Graduate Students </li></ol><ol type="1" id="1aaba4b9-c084-8193-892e-d971e900c389" class="numbered-list" start="4"><li>Most Students age in university is between <strong>18-22 Old</strong></li></ol><ol type="1" id="1aaba4b9-c084-813b-9503-f1cecc1256f1" class="numbered-list" start="5"><li>The most Students that stay in japan is between <strong>0-3 Years</strong></li></ol><ol type="1" id="1aaba4b9-c084-8184-80d5-c830a5cdc07f" class="numbered-list" start="6"><li>International students have a High English Proficiency and low Japanese language Proficiency. Meanwhile Domestic Students have a Low English Proficiency but High Japanese Language</li></ol><ol type="1" id="1aaba4b9-c084-81bc-8d74-d9cbf2fbd976" class="numbered-list" start="7"><li><strong>159 (62.11%)</strong> students are not that close or intimate with friends or local residents</li></ol><ol type="1" id="1aaba4b9-c084-8110-9883-fe97b9f0dfb2" class="numbered-list" start="8"><li><strong>169 (66.02%) </strong>students not belief that Religion affect in stress or depression</li></ol><ol type="1" id="1aaba4b9-c084-8199-98b2-e186b2573dac" class="numbered-list" start="9"><li><strong>61 (23.83%)</strong> students have a high risk of suicide while the others 195 (76.17%) students doesn’t have risk of suicide</li></ol><ol type="1" id="1aaba4b9-c084-81d8-b730-cffcd94f4d7e" class="numbered-list" start="10"><li><strong>95 (37.11%) </strong>students have state that they going through with depression</li></ol><ol type="1" id="1aaba4b9-c084-8142-ad92-efdff8cd1ba3" class="numbered-list" start="11"><li>we can split from students that have depression is <strong>42</strong> students have a Major type of depression and <strong>53</strong> have classified to ‘<strong>Other</strong>’ type of depression</li></ol><ol type="1" id="1aaba4b9-c084-8139-aad3-c04883444bd7" class="numbered-list" start="12"><li>From depression severity level, we can see that Most of students have Mild severity level with <strong>101 (39.45%) </strong>number of students and students that had a Moderate Severe and severe level total of <strong>23 students</strong></li></ol><ol type="1" id="1aeba4b9-c084-803a-acf6-d03a7b2588f1" class="numbered-list" start="13"><li>From PHQ-9 Test results, we get <strong>0 Min score,  25 max score and average of 8.28 score,</strong> from that test results we see that <strong>162 (63.28%) students had Mild depression level, 71 (27.73%) Moderate depression level</strong>, <strong>15 (5.86%) Moderately Severe level, and 8 (3.13%) Severe level</strong></li></ol><ol type="1" id="1aaba4b9-c084-8120-b1d0-ebf57665cbfd" class="numbered-list" start="14"><li>From SCS Test results, we get <strong>8 Min score, 48 max score, with 37.09 mean score</strong> that we use to categorized connectedness of students. We can see that <strong>145 (56.64%) Students</strong> feel connected and <strong>111 (43.36%)</strong> is in feel of disconnection either with friend or environment</li></ol><ol type="1" id="1aaba4b9-c084-8184-b3f8-e4053c9c1428" class="numbered-list" start="15"><li>From ASSIS Test results, we get<strong> 36 Min score, 145 max score, and average score of 73.36 </strong>score. students mostly had a low-normal score of ASSIS test that indicate they can still adapt with environment and culture and there are 16 (6.25%) students that get a warning from ASSIS test results</li></ol><ol type="1" id="1aaba4b9-c084-8157-8c93-dbd259d66c46" class="numbered-list" start="16"><li>From Average language proficiency per by region, from japanese proficiency, most International students had <strong>2-2.7 Japanese Proficiency score</strong>. Meanwhile Japanese Students have the most language proficiency with <strong>4.81 score</strong>. and English proficiency we can see most International Students have a good English Language Proficiency with a range of <strong>3.5-4.5</strong> proficiency and Japanese is the lowest one with a <strong>2.94</strong> proficiency</li></ol><ol type="1" id="1aeba4b9-c084-8042-a275-ec31738688ec" class="numbered-list" start="17"><li>Female students had minimal <strong>age of 17, 31 Max age, and 20.68 average age</strong>. Male students had <strong>18 minimal age, 31 Max age, and 21.17 average age</strong>.</li></ol><ol type="1" id="1aeba4b9-c084-8069-a92c-e851dc12acae" class="numbered-list" start="18"><li>From all of the test, we can see from each average test score that International Students has a bigger average score that can trigger several depression problems than domestic students</li></ol><ol type="1" id="1aeba4b9-c084-802f-b96e-c27067e0d29c" class="numbered-list" start="19"><li>30 years old International students has the most average high score in each test that can trigger several depression problems than &lt; 30 years old students </li></ol><ol type="1" id="1aeba4b9-c084-8015-8c87-ff52d9dcfd4d" class="numbered-list" start="20"><li>Based on all of the tests, International students who stay longer 8 until 10 years may has a depression problems than 1-7 years but they had experience to adapt in environment situation and culture</li></ol></div></details><h2 id="1aaba4b9-c084-81ba-8664-d045b6b71ae5" class="">Attachment</h2><figure id="1aeba4b9-c084-80d3-820f-df633898074c"><div class="source"><a href="students.csv">students.csv</a></div></figure><p id="1aeba4b9-c084-8016-9f4c-ea980e9b32f7" class="">
+    </p><p id="1aaba4b9-c084-8196-b852-d0911c88d4fd" class="">
+    </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
